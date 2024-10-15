@@ -1,4 +1,6 @@
 import random
+import matplotlib.pyplot as plt
+import numpy
 print(type(1+1)) #int
 print(type(3/2)) #float
 print(type(4/2)) #float
@@ -88,4 +90,62 @@ fuelCOnsumption_lp100km = float(input("Średnie spalanie: "))
 fuelPrice = 6.5
 fuelCOnsumption_lp1km = fuelCOnsumption_lp100km/100
 cost_zl = distance_km * fuelCOnsumption_lp1km * fuelPrice
-print(f"Całkowity koszt: {cost_zl:.2f} zł")
+print(f"Całkowity koszt: {cost_zl:.2f} zł, aby przejechać {distance_km}")
+
+
+# Zad. 7:
+# Narysuj schemat blokowy algorytmu i napisz program rozwiązywania ro wnania
+# liniowego ax + b = 0 , gdzie a i b są wspo łczynnikami podawanymi przez uz ytkownika
+
+a = float(input("Podaj współczynnik a: "))
+b = float(input("Podaj współczynnik b:"))
+x = numpy.linspace(-100, 100, 100)
+
+
+def plot(func):
+    plt.figure(figsize=(12, 8))
+    x = numpy.linspace(-100, 100, 100)
+    y = a * x + b
+    plt.plot(x, y, '-', color='blue')
+    plt.show()
+    plt.close()
+
+
+plot(lambda x: x + 0.5)
+
+# Zad. 8:
+# Narysuj schemat blokowy algorytmu i napisz program rozwiązywania ro wnania
+# kwadratowego ax2 + bx + c = 0, gdzie a, b i c są wspo łczynnikami podawanymi przez
+# uz ytkownika.
+asqrt = float(input("Podaj współczynnik a: "))
+bsqrt = float(input("Podaj współczynnik b: "))
+c = float(input("Podaj współczynnik c: "))
+x = numpy.linspace(-100, 100, 100)
+
+
+def plotsqrt(func):
+    plt.figure(figsize=(12, 8))
+    x = numpy.linspace(-100, 100, 100)
+    fx = asqrt * x**2 + bsqrt + c
+    plt.plot(x, fx, '-', color='blue')
+    plt.show()
+    plt.close()
+
+
+plotsqrt(lambda x: x + 0.5)
+
+# Zad. 9:
+# Napisz kalkulator, który wyświetli wyniki dodawania, odejmowania, mnożenia, dzielenia i
+# potęgowania 2 liczb podanych przez użytkownika.
+
+number1 = float(input("POdaj pierwsza liczbe: "))
+number2 = float(input("Podaj druga liczbe: "))
+
+print(f"Wynik dodawania{number1 + number2}", end="\n")
+print(f"Wynik odejmowania{number1 - number2}", end="\n")
+print(f"Wynik mnożenia{number1 * number2}", end="\n")
+if number2 == 0:
+    number3 = float(input("Podaj liczbe inną niż 0"))
+    print(f"Wynik dzielenia{number1 / number3}", end="\n")  
+else:
+    print(f"Wynik dzielenia{number1 / number2}", end="\n")    
